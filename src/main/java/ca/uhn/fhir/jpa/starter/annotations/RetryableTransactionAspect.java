@@ -32,12 +32,15 @@ public class RetryableTransactionAspect {
 
 	@Pointcut("execution(* ca.uhn.fhir.jpa..*(..)) && @annotation(transactional)")
 	public void anyTransactionBoundaryOperation(Transactional transactional) {
+		logger.info("RetryableTransactionAspect Loaded");
 	}
 
 	@Around(value = "anyTransactionBoundaryOperation(transactional)",
 		argNames = "pjp,transactional")
 	public Object doInTransaction(ProceedingJoinPoint pjp, Transactional transactional)
 		throws Throwable {
+
+		logger.info("RetryableTransactionAspect in transaction");
 		int numCalls = 0;
 
 		final Instant callTime = Instant.now();

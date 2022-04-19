@@ -6,11 +6,11 @@ spring:
     check-location: false
     baselineOnMigrate: true
   datasource:
-    url: 'jdbc:h2:file:./target/database/h2'
+    url: 'jdbc:postgresql://localhost:26257/hapi_fhir_t12_epic?user=root&sslmode=disable'
     #url: jdbc:h2:mem:test_mem
-    username: sa
+    username: root
     password: null
-    driverClassName: org.h2.Driver
+    driverClassName: org.postgresql.Driver
     max-active: 15
 
     # database connection pool size
@@ -24,7 +24,7 @@ spring:
       #If using H2, then supply the value of ca.uhn.fhir.jpa.model.dialect.HapiFhirH2Dialect
       #If using postgres, then supply the value of ca.uhn.fhir.jpa.model.dialect.HapiFhirPostgres94Dialect
 
-      hibernate.dialect: ca.uhn.fhir.jpa.model.dialect.HapiFhirH2Dialect
+      hibernate.dialect: org.hibernate.dialect.CockroachDB201Dialect
   #      hibernate.hbm2ddl.auto: update
   #      hibernate.jdbc.batch_size: 20
   #      hibernate.cache.use_query_cache: false
