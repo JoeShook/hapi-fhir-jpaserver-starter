@@ -2,7 +2,7 @@ spring:
   main:
     allow-circular-references: true
   flyway:
-    enabled: false
+    enabled: true
     check-location: false
     baselineOnMigrate: true
   datasource:
